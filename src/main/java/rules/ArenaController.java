@@ -7,25 +7,25 @@ import java.io.IOException;
 
 public class ArenaController {
     private final ArenaView gui;
-    private final ArenaModel arena;
+    private final PlayerController player;
 
     public ArenaController(ArenaView gui, ArenaModel arena) {
         this.gui = gui;
-        this.arena = arena;
+        this.player = new PlayerController(arena);
+    }
+
+    private void executeCommand(ArenaView.COMMAND command) throws IOException {
+        if (command == ArenaView.COMMAND.EOF) gui.closeScreen();
     }
 
     public void start() throws IOException {
-        while (true) {
-            ArenaView.COMMAND command = gui.getCommand();
+        ArenaView.COMMAND command = ArenaView.COMMAND.NOOP;
 
-            if (command == ArenaView.COMMAND.LEFT)
-                arena.setPlayerPosition(arena.getPlayerPosition().left());
-            if (command == ArenaView.COMMAND.RIGHT)
-                arena.setPlayerPosition(arena.getPlayerPosition().right());
-            if (command == ArenaView.COMMAND.EOF) {
-                gui.closeScreen();
-                break;
-            }
+        while (command != ArenaView.COMMAND.EOF) {
+            command = gui.getCommand();
+
+            this.executeCommand(command);
+            player.executeCommand(command);
         }
     }
 }

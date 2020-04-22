@@ -16,7 +16,7 @@ public class ArenaView implements Observer<ArenaModel> {
     private Screen screen;
     private PlayerView player;
 
-    public enum COMMAND {RIGHT, LEFT, EOF}
+    public enum COMMAND {RIGHT, LEFT, EOF, NOOP}
 
     public ArenaView(int width, int height) throws IOException {
         DefaultTerminalFactory terminalFactory = new DefaultTerminalFactory().setInitialTerminalSize(new TerminalSize(width, height));
@@ -50,12 +50,14 @@ public class ArenaView implements Observer<ArenaModel> {
     }
 
     public COMMAND getCommand() throws IOException {
-        while (true) {
-            KeyStroke key = screen.readInput();
-            if (key.getKeyType() == KeyType.ArrowRight) return COMMAND.RIGHT;
-            if (key.getKeyType() == KeyType.ArrowLeft) return COMMAND.LEFT;
-            if (key.getKeyType() == KeyType.Character && key.getCharacter() == 'q') return COMMAND.EOF;
-            if (key.getKeyType() == KeyType.EOF) return COMMAND.EOF;
-        }
+        KeyStroke key = screen.pollInput();
+
+        if (key == null) return COMMAND.NOOP;
+        if (key.getKeyType() == KeyType.ArrowRight) return COMMAND.RIGHT;
+        if (key.getKeyType() == KeyType.ArrowLeft) return COMMAND.LEFT;
+        if (key.getKeyType() == KeyType.Character && key.getCharacter() == 'q') return COMMAND.EOF;
+        if (key.getKeyType() == KeyType.EOF) return COMMAND.EOF;
+
+        return COMMAND.NOOP;
     }
 }
