@@ -5,12 +5,16 @@ import observer.Observable;
 public class ArenaModel extends Observable<ArenaModel> {
     private int width;
     private int height;
-    private Player player;
+    private PlayerModel player;
 
     public ArenaModel(int width, int height) {
         this.width = width;
         this.height = height;
-        this.player = new Player(width / 2, height - 1);
+        this.player = new PlayerModel(width / 2, height - 1);
+    }
+
+    public PlayerModel getPlayerModel() {
+        return player;
     }
 
     public Position getPlayerPosition() {

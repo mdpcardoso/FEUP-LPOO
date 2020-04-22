@@ -15,6 +15,7 @@ import java.io.IOException;
 
 public class ArenaView implements Observer<ArenaModel> {
     private Screen screen;
+    private PlayerView player;
 
     public enum COMMAND {RIGHT, LEFT, EOF}
 
@@ -26,6 +27,8 @@ public class ArenaView implements Observer<ArenaModel> {
         screen.setCursorPosition(null);
         screen.startScreen();
         screen.doResizeIfNecessary();
+
+        player = new PlayerView();
     }
 
     @Override
@@ -36,7 +39,7 @@ public class ArenaView implements Observer<ArenaModel> {
     private void drawArena(ArenaModel arena) {
         try {
             screen.clear();
-            screen.setCharacter(arena.getPlayerPosition().getX(), arena.getPlayerPosition().getY(), new TextCharacter('^'));
+            player.draw(screen, arena.getPlayerModel());
             screen.refresh();
         } catch (IOException e) {
             e.printStackTrace();
