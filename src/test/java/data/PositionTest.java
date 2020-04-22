@@ -14,25 +14,25 @@ public class PositionTest {
     }
 
     @Test
-    public void up() {
+    public void testUp() {
         Position up = new Position(0, -1);
         assertEquals(up, pos.up());
     }
 
     @Test
-    public void down() {
+    public void testDown() {
         Position down = new Position(0, 1);
         assertEquals(down, pos.down());
     }
 
     @Test
-    public void right() {
+    public void testRight() {
         Position right = new Position(1, 0);
         assertEquals(right, pos.right());
     }
 
     @Test
-    public void left() {
+    public void testLeft() {
         Position left = new Position(-1, 0);
         assertEquals(left, pos.left());
     }
