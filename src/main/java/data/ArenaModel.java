@@ -25,4 +25,12 @@ public class ArenaModel extends Observable<ArenaModel> {
         player.setPosition(position);
         notifyObservers(this);
     }
+
+    public int getWidth() {
+        return width;
+    }
+
+    public int getHeight() {
+        return height;
+    }
 }
