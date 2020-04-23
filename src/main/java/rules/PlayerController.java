@@ -5,7 +5,6 @@ import gui.ArenaView;
 
 public class PlayerController {
     private ArenaModel arena;
-    private ArenaView view;
 
     public PlayerController(ArenaModel arena) {
         this.arena = arena;
