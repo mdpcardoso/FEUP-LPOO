@@ -1,14 +1,16 @@
-# g52
-Features: 
-- níveis com crescente grau de dificuldade
-- aumentar a dificuldade do jogo ao aumentar a velocidade/número de obstáculos
-- padrões de obstáculos para representar a transição entre níveis de dificuldade
-- registo do score
+# LPOO_T5G2 - Cubefield
+*Features: 
+- **game levels** with increasing difficulty 
+- game difficulty increases by **increasing speed** with which the obstacles move
+- obstacle patterns to represent **level transition**
+- keeping track of **score** in real time 
+- certain **key combinations** allow our player to use some extra *powers* against the obstacles
+- the player can also get some extra powers by **hitting _certain_ obstacles**
 
-Design Patterns:
+*Design Patterns:
 
-Code Smells:
+*Code Smells:
 
-Refactoring:
+*Refactoring:
 
-Tests:
+*Tests:
