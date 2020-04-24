@@ -3,8 +3,8 @@ package data;
 import java.util.Objects;
 
 public class Position {
-    private int x;
-    private int y;
+    private final int x;
+    private final int y;
 
     public Position(int x, int y) {
         this.x = x;
@@ -15,32 +15,40 @@ public class Position {
         return x;
     }
 
-    public void setX(int x) {
-        this.x = x;
-    }
-
     public int getY() {
         return y;
     }
 
-    public void setY(int y) {
-        this.y = y;
+    public Position upBy(int amount) {
+        return new Position(this.x, this.y - amount);
     }
 
     public Position up() {
-        return new Position(this.x, this.y - 1);
+        return upBy(1);
+    }
+
+    public Position downBy(int amount) {
+        return new Position(this.x, this.y + amount);
     }
 
     public Position down() {
-        return new Position(this.x, this.y + 1);
+        return downBy(1);
+    }
+
+    public Position rightBy(int amount) {
+        return new Position(this.x + amount, this.y);
     }
 
     public Position right() {
-        return new Position(this.x + 1, this.y);
+        return rightBy(1);
+    }
+
+    public Position leftBy(int amount) {
+        return new Position(this.x - amount, this.y);
     }
 
     public Position left() {
-        return new Position(this.x - 1, this.y);
+        return leftBy(1);
     }
 
     @Override
