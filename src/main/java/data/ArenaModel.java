@@ -7,10 +7,11 @@ public class ArenaModel extends Observable<ArenaModel> {
     private int height;
     private PlayerModel player;
 
-    public ArenaModel(int width, int height) {
+    public ArenaModel(int width, int height, PlayerModel player) {
         this.width = width;
         this.height = height;
-        this.player = new PlayerModel(width / 2, height - 1);
+        this.player = player;
+        this.player.setPosition(new Position(width / 2, height - 1));
     }
 
     public PlayerModel getPlayerModel() {
