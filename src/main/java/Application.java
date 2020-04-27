@@ -1,6 +1,7 @@
 import data.ArenaModel;
 import gui.ArenaView;
 import rules.ArenaController;
+import rules.PlayerController;
 
 import java.io.IOException;
 
@@ -11,7 +12,8 @@ public class Application {
         gui.changed(arena);
         arena.addObserver(gui);
 
-        ArenaController controller = new ArenaController(gui, arena);
+        PlayerController player = new PlayerController();
+        ArenaController controller = new ArenaController(gui, arena, player);
         controller.start();
     }
 }

@@ -8,10 +8,12 @@ import java.io.IOException;
 public class ArenaController {
     private final ArenaView gui;
     private final PlayerController player;
+    private final ArenaModel arena;
 
-    public ArenaController(ArenaView gui, ArenaModel arena) {
+    public ArenaController(ArenaView gui, ArenaModel arena, PlayerController player) {
+        this.arena = arena;
         this.gui = gui;
-        this.player = new PlayerController(arena);
+        this.player = player;
     }
 
     private void executeCommand(ArenaView.COMMAND command) throws IOException {
@@ -25,7 +27,7 @@ public class ArenaController {
             command = gui.getCommand();
 
             this.executeCommand(command);
-            player.executeCommand(command);
+            player.executeCommand(command, arena);
         }
     }
 }
