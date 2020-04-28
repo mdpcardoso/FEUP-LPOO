@@ -7,7 +7,7 @@ import rules.PlayerController;
 import java.io.IOException;
 
 public class Application {
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException, InterruptedException {
         PlayerModel playerModel = new PlayerModel(0,0);
         ArenaModel arena = new ArenaModel(60, 30, playerModel);
 
