@@ -20,7 +20,7 @@ public class ArenaController {
         if (command == ArenaView.COMMAND.EOF) gui.closeScreen();
     }
 
-    public void start() throws IOException {
+    public void start() throws IOException, InterruptedException {
         ArenaView.COMMAND command = ArenaView.COMMAND.NOOP;
 
         while (command != ArenaView.COMMAND.EOF) {
@@ -28,6 +28,7 @@ public class ArenaController {
 
             this.executeCommand(command);
             player.executeCommand(command, arena);
+            Thread.sleep(33);
         }
     }
 }

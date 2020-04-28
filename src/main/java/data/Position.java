@@ -19,36 +19,28 @@ public class Position {
         return y;
     }
 
-    public Position upBy(int amount) {
-        return new Position(this.x, this.y - amount);
-    }
-
-    public Position up() {
-        return upBy(1);
-    }
-
-    public Position downBy(int amount) {
+    public Position verticalBy(int amount) {
         return new Position(this.x, this.y + amount);
     }
 
-    public Position down() {
-        return downBy(1);
+    public Position up() {
+        return verticalBy(-1);
     }
 
-    public Position rightBy(int amount) {
+    public Position down() {
+        return verticalBy(1);
+    }
+
+    public Position horizontalBy(int amount) {
         return new Position(this.x + amount, this.y);
     }
 
     public Position right() {
-        return rightBy(1);
-    }
-
-    public Position leftBy(int amount) {
-        return new Position(this.x - amount, this.y);
+        return horizontalBy(1);
     }
 
     public Position left() {
-        return leftBy(1);
+        return horizontalBy(-1);
     }
 
     @Override

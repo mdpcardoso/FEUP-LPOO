@@ -22,6 +22,14 @@ public class ArenaModel extends Observable<ArenaModel> {
         return player.getPosition();
     }
 
+    public int getPlayerVelocity() {
+        return player.getVelocity();
+    }
+
+    public void setRelativePlayerVelocity(int offset) {
+        player.setRelativeVelocity(offset);
+    }
+
     public void setPlayerPosition(Position position) {
         player.setPosition(position);
         notifyObservers(this);
