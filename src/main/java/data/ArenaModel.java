@@ -8,12 +8,15 @@ public class ArenaModel extends Observable<ArenaModel> {
     private PlayerModel player;
     private CubeModel cube;
 
+
     public ArenaModel(int width, int height, PlayerModel player, CubeModel cube) {
         this.width = width;
         this.height = height;
         this.player = player;
         this.player.setPosition(new Position(width / 2, height - 1));
+
         this.cube = cube;
+
     }
 
     public PlayerModel getPlayerModel() {

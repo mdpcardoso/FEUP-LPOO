@@ -5,6 +5,7 @@ import data.Position;
 import gui.ArenaView;
 import rules.ArenaController;
 import rules.CubeController;
+
 import rules.PlayerController;
 
 import java.io.IOException;
@@ -15,6 +16,7 @@ public class Application {
         Position position = new Position(10, 15);
         CubeModel cubeModel = new CubeModel(position, 3);
         ArenaModel arena = new ArenaModel(60, 30, playerModel, cubeModel);
+
 
         ArenaView gui = new ArenaView(60, 30);
         arena.addObserver(gui);
