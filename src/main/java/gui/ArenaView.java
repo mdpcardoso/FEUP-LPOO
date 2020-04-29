@@ -15,6 +15,7 @@ import java.io.IOException;
 public class ArenaView implements Observer<ArenaModel> {
     private Screen screen;
     private PlayerView player;
+    private CubeView cube;
 
     public enum COMMAND {RIGHT, LEFT, EOF, NOOP}
 
@@ -28,6 +29,7 @@ public class ArenaView implements Observer<ArenaModel> {
         screen.doResizeIfNecessary();
 
         player = new PlayerView();
+        cube = new CubeView();
     }
 
     @Override
@@ -39,6 +41,7 @@ public class ArenaView implements Observer<ArenaModel> {
         try {
             screen.clear();
             player.draw(screen, arena.getPlayerModel());
+            cube.draw(screen, arena.getCubeModel());
             screen.refresh();
         } catch (IOException e) {
             e.printStackTrace();

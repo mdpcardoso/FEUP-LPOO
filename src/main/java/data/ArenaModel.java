@@ -6,12 +6,17 @@ public class ArenaModel extends Observable<ArenaModel> {
     private int width;
     private int height;
     private PlayerModel player;
+    private CubeModel cube;
 
-    public ArenaModel(int width, int height, PlayerModel player) {
+
+    public ArenaModel(int width, int height, PlayerModel player, CubeModel cube) {
         this.width = width;
         this.height = height;
         this.player = player;
         this.player.setPosition(new Position(width / 2, height - 1));
+
+        this.cube = cube;
+
     }
 
     public PlayerModel getPlayerModel() {
@@ -42,4 +47,6 @@ public class ArenaModel extends Observable<ArenaModel> {
     public int getHeight() {
         return height;
     }
+
+    public CubeModel getCubeModel(){return cube;};
 }
