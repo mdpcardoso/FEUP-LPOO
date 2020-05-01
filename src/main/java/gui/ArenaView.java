@@ -13,12 +13,12 @@ import data.CubeModel;
 
 
 import java.io.IOException;
-import java.util.List;
 
 public class ArenaView {
     private Screen screen;
     private PlayerView player;
     private CubeView cubeView;
+    private OverlayView overlay;
 
     public enum COMMAND {RIGHT, LEFT, EOF, NOOP}
 
@@ -33,6 +33,7 @@ public class ArenaView {
 
         player = new PlayerView();
         cubeView = new CubeView();
+        overlay = new OverlayView();
     }
 
     public void drawArena(ArenaModel arena) {
@@ -41,10 +42,10 @@ public class ArenaView {
             player.draw(screen, arena.getPlayerModel());
 
             CubeModel cubeModel = arena.getCubeModel();
-            List<Cube> cubes = cubeModel.getCubes();
-            for (Cube cube : cubes)
+            for (Cube cube : cubeModel.getCubes())
                 cubeView.draw(screen, cube);
 
+            overlay.draw(screen, arena.getOverlayModel());
             screen.refresh();
         } catch (IOException e) {
             e.printStackTrace();

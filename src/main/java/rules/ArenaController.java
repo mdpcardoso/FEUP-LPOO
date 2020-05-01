@@ -9,13 +9,15 @@ public class ArenaController {
     private final ArenaView gui;
     private final PlayerController player;
     private final CubeController cube;
+    private final OverlayController overlay;
     private final ArenaModel arena;
 
-    public ArenaController(ArenaView gui, ArenaModel arena, PlayerController player, CubeController cube) {
+    public ArenaController(ArenaView gui, ArenaModel arena, PlayerController player, CubeController cube, OverlayController overlay) {
         this.arena = arena;
         this.gui = gui;
         this.player = player;
         this.cube = cube;
+        this.overlay = overlay;
     }
 
     private void executeCommand(ArenaView.COMMAND command) throws IOException {
@@ -34,6 +36,7 @@ public class ArenaController {
             this.executeCommand(command);
             player.executeCommand(command, arena);
             cube.executeCommand(frameCounter, arena);
+            overlay.executeCommand(frameCounter, arena);
 
             gui.drawArena(arena);
             frameCounter += 1;

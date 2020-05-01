@@ -5,16 +5,17 @@ public class ArenaModel {
     private int height;
     private PlayerModel player;
     private CubeModel cube;
+    private OverlayModel overlay;
 
 
-    public ArenaModel(int width, int height, PlayerModel player, CubeModel cube) {
+    public ArenaModel(int width, int height, PlayerModel player, CubeModel cube, OverlayModel overlay) {
         this.width = width;
         this.height = height;
         this.player = player;
         this.player.setPosition(new Position(width / 2, height - 1));
 
         this.cube = cube;
-
+        this.overlay = overlay;
     }
 
     public PlayerModel getPlayerModel() {
@@ -45,5 +46,7 @@ public class ArenaModel {
         return height;
     }
 
-    public CubeModel getCubeModel(){return cube;}
+    public CubeModel getCubeModel(){ return cube; }
+
+    public OverlayModel getOverlayModel() {return overlay;}
 }
