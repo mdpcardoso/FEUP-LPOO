@@ -8,13 +8,17 @@ import com.googlecode.lanterna.screen.TerminalScreen;
 import com.googlecode.lanterna.terminal.DefaultTerminalFactory;
 import com.googlecode.lanterna.terminal.Terminal;
 import data.ArenaModel;
+import data.Cube;
+import data.CubeModel;
+
 
 import java.io.IOException;
+import java.util.List;
 
 public class ArenaView {
     private Screen screen;
     private PlayerView player;
-    private CubeView cube;
+    private CubeView cubeView;
 
     public enum COMMAND {RIGHT, LEFT, EOF, NOOP}
 
@@ -28,14 +32,19 @@ public class ArenaView {
         screen.doResizeIfNecessary();
 
         player = new PlayerView();
-        cube = new CubeView();
+        cubeView = new CubeView();
     }
 
     public void drawArena(ArenaModel arena) {
         try {
             screen.clear();
             player.draw(screen, arena.getPlayerModel());
-            cube.draw(screen, arena.getCubeModel());
+
+            CubeModel cubeModel = arena.getCubeModel();
+            List<Cube> cubes = cubeModel.getCubes();
+            for (Cube cube : cubes)
+                cubeView.draw(screen, cube);
+
             screen.refresh();
         } catch (IOException e) {
             e.printStackTrace();

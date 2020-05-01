@@ -25,9 +25,9 @@ public class CubeController {
     }
 
     private void cubeFlow() {
+        makeNewCubes();
         makeCubesFall();
         removeFallenCubes();
-        makeNewCubes();
     }
 
     private void makeNewCubes() {
@@ -72,13 +72,8 @@ public class CubeController {
                     }
 
                     cubeFlow();
-                    /*
-                    try {
-                        view.draw();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                    */
+
+                    view.drawArena(model);
 
                 }
             }
