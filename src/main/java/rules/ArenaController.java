@@ -22,13 +22,20 @@ public class ArenaController {
 
     public void start() throws IOException, InterruptedException {
         ArenaView.COMMAND command = ArenaView.COMMAND.NOOP;
+        long frameCounter = 0;
 
         while (command != ArenaView.COMMAND.EOF) {
+            long start = System.currentTimeMillis();
+
             command = gui.getCommand();
 
             this.executeCommand(command);
             player.executeCommand(command, arena);
-            Thread.sleep(33);
+
+            gui.drawArena(arena);
+            frameCounter += 1;
+
+            Thread.sleep(start + 50 - System.currentTimeMillis());
         }
     }
 }

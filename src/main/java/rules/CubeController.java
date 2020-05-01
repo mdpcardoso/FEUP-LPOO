@@ -4,7 +4,6 @@ import data.ArenaModel;
 import data.CubeModel;
 import data.Cube;
 import gui.ArenaView;
-import jdk.nashorn.internal.runtime.SharedPropertyMap;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -27,9 +26,9 @@ public class CubeController {
     }
 
     private void cubeFlow() {
+        makeNewCubes();
         makeCubesFall();
         removeFallenCubes();
-        makeNewCubes();
     }
 
     private void makeNewCubes() {
@@ -74,13 +73,8 @@ public class CubeController {
                     }
 
                     cubeFlow();
-                    /*
-                    try {
-                        view.draw();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                    */
+
+                    view.drawArena(model);
 
                 }
             }

@@ -15,6 +15,7 @@ public class PlayerModelTest {
 
     @Test
     public void testConstructor() {
+        assertEquals(0, player.getVelocity());
         assertEquals(7, player.getPosition().getX());
         assertEquals(0, player.getPosition().getY());
     }
@@ -25,5 +26,17 @@ public class PlayerModelTest {
 
         assertEquals(2, player.getPosition().getX());
         assertEquals(3, player.getPosition().getY());
+    }
+
+    @Test
+    public void testSetRelativeVelocity() {
+        player.setRelativeVelocity(5);
+        assertEquals(5, player.getVelocity());
+
+        player.setRelativeVelocity(-2);
+        assertEquals(3, player.getVelocity());
+        
+        player.setRelativeVelocity(5);
+        assertEquals(8, player.getVelocity());
     }
 }

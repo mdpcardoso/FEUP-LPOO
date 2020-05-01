@@ -3,11 +3,10 @@ package data;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CubeModel extends Cube{
+public class CubeModel{
     private List<Cube> cubes;
 
-    public CubeModel(Position position, int speed){
-        super(position, speed);
+    public CubeModel(){
         cubes = new ArrayList<>();
     }
 
