@@ -1,7 +1,6 @@
 import data.ArenaModel;
 import data.CubeModel;
 import data.PlayerModel;
-import data.Position;
 import gui.ArenaView;
 import rules.ArenaController;
 import rules.CubeController;
@@ -19,9 +18,8 @@ public class Application {
         ArenaView gui = new ArenaView(60, 30);
 
         PlayerController playerController = new PlayerController();
-        CubeController cubeController = new CubeController(arena, gui, 25, 4);
-        ArenaController controller = new ArenaController(gui, arena, playerController);
-        cubeController.start();
+        CubeController cubeController = new CubeController(30, 1);
+        ArenaController controller = new ArenaController(gui, arena, playerController, cubeController);
         controller.start();
 
     }

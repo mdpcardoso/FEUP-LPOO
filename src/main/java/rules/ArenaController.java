@@ -8,12 +8,14 @@ import java.io.IOException;
 public class ArenaController {
     private final ArenaView gui;
     private final PlayerController player;
+    private final CubeController cube;
     private final ArenaModel arena;
 
-    public ArenaController(ArenaView gui, ArenaModel arena, PlayerController player) {
+    public ArenaController(ArenaView gui, ArenaModel arena, PlayerController player, CubeController cube) {
         this.arena = arena;
         this.gui = gui;
         this.player = player;
+        this.cube = cube;
     }
 
     private void executeCommand(ArenaView.COMMAND command) throws IOException {
@@ -31,6 +33,7 @@ public class ArenaController {
 
             this.executeCommand(command);
             player.executeCommand(command, arena);
+            cube.executeCommand(frameCounter, arena);
 
             gui.drawArena(arena);
             frameCounter += 1;
