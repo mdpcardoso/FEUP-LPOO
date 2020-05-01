@@ -17,10 +17,7 @@ public class Application {
         CubeModel cubeModel = new CubeModel(position, 3);
         ArenaModel arena = new ArenaModel(60, 30, playerModel, cubeModel);
 
-
         ArenaView gui = new ArenaView(60, 30);
-        arena.addObserver(gui);
-        gui.changed(arena);
 
         PlayerController playerController = new PlayerController();
         CubeController cubeController = new CubeController(arena, gui, 10, 20);

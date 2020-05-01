@@ -17,11 +17,11 @@ Our game is inspired by Cubefield. Cubefield is an endless runner game where the
 ### Problem in Context
 There was a considerable amount of too tightly coupled code, accompanied by classes with too much responsibility. The lack of modularity caused both difficulty extending functionality and unit testing the code.
 ### The pattern
-We applied the **MVC** architectural pattern. This patterns allows for **separation of concerns** while simultaneously promoting **looser coupling**. This pattern addresses the identified problems because it implies the division of the program logic into three loosely coupled units. That promotes both modularity and the usage of single-responsibility principle.
+We applied the **MVC** architectural pattern. This pattern allows for **separation of concerns** while simultaneously promoting **looser coupling**. This pattern addresses the identified problems because it implies the division of the program logic into three loosely coupled units. That promotes both modularity and the usage of single-responsibility principle.
 ### Implementation
 The game was separated in three units: the model (representing the data), the view (representing the interface with the user, both visuals and inputs) and the controller (representing the rules and core logic of the game).
 
-The **model** part aggregates classes that provide data for game entities such as the **player**, the **cubes** and the **arena** where they exist. The **view** classes are responsible for knowing how each entity is drawn and the controller are responsible for the main loop and entity behavior. 
+The **model** part aggregates classes that provide data for game entities such as the **player**, the **cubes** and the **arena** where they exist. The **view** classes are responsible for knowing how each entity is drawn, and the controllers' are responsible for the main loop and entity behavior. 
 ### Consequences
 The use of MVC provided the following advantages:
 * Due to the looser coupling, dependency injection was possible allowing proper unit testing to happen.

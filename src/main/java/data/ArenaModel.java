@@ -1,8 +1,6 @@
 package data;
 
-import observer.Observable;
-
-public class ArenaModel extends Observable<ArenaModel> {
+public class ArenaModel {
     private int width;
     private int height;
     private PlayerModel player;
@@ -37,7 +35,6 @@ public class ArenaModel extends Observable<ArenaModel> {
 
     public void setPlayerPosition(Position position) {
         player.setPosition(position);
-        notifyObservers(this);
     }
 
     public int getWidth() {
@@ -48,5 +45,5 @@ public class ArenaModel extends Observable<ArenaModel> {
         return height;
     }
 
-    public CubeModel getCubeModel(){return cube;};
+    public CubeModel getCubeModel(){return cube;}
 }

@@ -3,12 +3,9 @@ package gui;
 import com.googlecode.lanterna.TextCharacter;
 import com.googlecode.lanterna.screen.TerminalScreen;
 import data.CubeModel;
-import data.PlayerModel;
 import data.Position;
 import org.junit.Test;
 import org.mockito.Mockito;
-
-import static org.junit.Assert.*;
 
 public class CubeViewTest {
 

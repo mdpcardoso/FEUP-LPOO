@@ -8,11 +8,10 @@ import com.googlecode.lanterna.screen.TerminalScreen;
 import com.googlecode.lanterna.terminal.DefaultTerminalFactory;
 import com.googlecode.lanterna.terminal.Terminal;
 import data.ArenaModel;
-import observer.Observer;
 
 import java.io.IOException;
 
-public class ArenaView implements Observer<ArenaModel> {
+public class ArenaView {
     private Screen screen;
     private PlayerView player;
     private CubeView cube;
@@ -32,12 +31,7 @@ public class ArenaView implements Observer<ArenaModel> {
         cube = new CubeView();
     }
 
-    @Override
-    public void changed(ArenaModel subject) {
-        drawArena(subject);
-    }
-
-    private void drawArena(ArenaModel arena) {
+    public void drawArena(ArenaModel arena) {
         try {
             screen.clear();
             player.draw(screen, arena.getPlayerModel());

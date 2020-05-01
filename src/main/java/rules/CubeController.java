@@ -4,9 +4,7 @@ import data.ArenaModel;
 import data.CubeModel;
 import data.Cube;
 import gui.ArenaView;
-import jdk.nashorn.internal.runtime.SharedPropertyMap;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
