@@ -39,6 +39,7 @@ Due to following the MVC pattern described above, most of the structure in order
 The game loop pattern provided the following advantages:
 * The game no longer spins needlessly.
 * There is a fixed (yet adjustable) frame time, which can be used as a reference for the passage of time.
+
 Still, there are some things to keep in mind:
 * The frame time must be set conservatively as *most* computers can not go back in time (at least not mine). Our implementation does not account for situations where the game goes over budget.
 * Time based events are effectively bound to the frame rate, providing less flexibility.
