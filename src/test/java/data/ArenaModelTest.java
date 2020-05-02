@@ -9,13 +9,12 @@ import static org.junit.Assert.*;
 public class ArenaModelTest {
     private ArenaModel arenaModel;
     private PlayerModel playerModel;
-    private OverlayModel overlayModel;
 
     @Before
     public void setUp() {
         CubeModel cubeModel = Mockito.mock(CubeModel.class);
         playerModel = Mockito.mock(PlayerModel.class);
-        overlayModel = Mockito.mock(OverlayModel.class);
+        OverlayModel overlayModel = Mockito.mock(OverlayModel.class);
         arenaModel = new ArenaModel(10, 15, playerModel, cubeModel, overlayModel);
     }
 

@@ -6,7 +6,7 @@ Our game is inspired by Cubefield. Cubefield is an endless runner game where the
 - Movement - the character moves horizontally according to input
 - Movement - the character has *weight* due to acceleration and drag implementation
 - Gameplay - cubes fall with adjustable speed
-- Score - score is kept track in real-time and displayed in an overaly
+- Score - score is kept track in real-time and displayed in an overlay
 ### Planned:
 - **game levels** with increasing difficulty 
 - game difficulty increases by **increasing speed** with which the obstacles move
