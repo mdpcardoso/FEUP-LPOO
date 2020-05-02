@@ -13,14 +13,17 @@ import data.CubeModel;
 
 
 import java.io.IOException;
-import java.util.List;
 
 public class ArenaView {
     private Screen screen;
     private PlayerView player;
     private CubeView cubeView;
+    private OverlayView overlay;
+    private CollisionView collisionView;
 
     public enum COMMAND {RIGHT, LEFT, EOF, NOOP}
+
+    private boolean collision = false;
 
     public ArenaView(int width, int height) throws IOException {
         DefaultTerminalFactory terminalFactory = new DefaultTerminalFactory().setInitialTerminalSize(new TerminalSize(width, height));
@@ -33,18 +36,28 @@ public class ArenaView {
 
         player = new PlayerView();
         cubeView = new CubeView();
+        overlay = new OverlayView();
     }
 
     public void drawArena(ArenaModel arena) {
         try {
             screen.clear();
-            player.draw(screen, arena.getPlayerModel());
+
 
             CubeModel cubeModel = arena.getCubeModel();
-            List<Cube> cubes = cubeModel.getCubes();
-            for (Cube cube : cubes)
+            for (Cube cube : cubeModel.getCubes()) {
+                if (arena.getPlayerModel().getPosition().equals(cube.getPosition())) {
+                    collision = true;
+                    collisionView.draw(screen, arena.getPlayerModel());
+                }
                 cubeView.draw(screen, cube);
+            }
 
+            player.draw(screen, arena.getPlayerModel());
+
+
+
+            overlay.draw(screen, arena.getOverlayModel());
             screen.refresh();
         } catch (IOException e) {
             e.printStackTrace();
@@ -58,12 +71,17 @@ public class ArenaView {
     public COMMAND getCommand() throws IOException {
         KeyStroke key = screen.pollInput();
 
-        if (key == null) return COMMAND.NOOP;
-        if (key.getKeyType() == KeyType.ArrowRight) return COMMAND.RIGHT;
-        if (key.getKeyType() == KeyType.ArrowLeft) return COMMAND.LEFT;
-        if (key.getKeyType() == KeyType.Character && key.getCharacter() == 'q') return COMMAND.EOF;
-        if (key.getKeyType() == KeyType.EOF) return COMMAND.EOF;
+        if(collision) {
+            return COMMAND.EOF;
+        }
+        else {
 
+            if (key == null) return COMMAND.NOOP;
+            if (key.getKeyType() == KeyType.ArrowRight) return COMMAND.RIGHT;
+            if (key.getKeyType() == KeyType.ArrowLeft) return COMMAND.LEFT;
+            if (key.getKeyType() == KeyType.Character && key.getCharacter() == 'q') return COMMAND.EOF;
+            if (key.getKeyType() == KeyType.EOF) return COMMAND.EOF;
+        }
         return COMMAND.NOOP;
     }
 }
