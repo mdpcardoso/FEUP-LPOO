@@ -1,6 +1,7 @@
 package rules;
 
 import data.ArenaModel;
+import data.Position;
 import gui.ArenaView;
 
 public class PlayerController {
@@ -17,7 +18,17 @@ public class PlayerController {
                 break;
         }
 
-        arena.setPlayerPosition(arena.getPlayerPosition().horizontalBy(arena.getPlayerVelocity()));
+        Position nextPosition = arena.getPlayerPosition().horizontalBy(arena.getPlayerVelocity());
+
+        if (canMove(nextPosition, arena)) {
+            arena.setPlayerPosition(nextPosition);
+        }
+    }
+
+    private boolean canMove(Position position, ArenaModel arena) {
+        if (position.getX() < 0 || position.getX() >= arena.getWidth()) return false;
+        if (position.getY() < 0 || position.getY() >= arena.getHeight()) return false;
+        return true;
     }
 
     private void handleDeceleration(ArenaModel arena, int drag) {
