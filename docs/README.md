@@ -58,4 +58,6 @@ Still, there are some things to keep in mind:
 
 ## Refactoring:
 
-## Tests:
+## Tests
+### Coverage
+![Coverage](media/coverage.png)

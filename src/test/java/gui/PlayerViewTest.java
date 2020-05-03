@@ -20,6 +20,6 @@ public class PlayerViewTest {
         playerView.draw(screen, playerModel);
 
         Mockito.verify(screen, Mockito.times(1))
-                .setCharacter(1, 2, new TextCharacter('^'));
+                .setCharacter(1, 2, new TextCharacter((char)0x25b2));
     }
 }
