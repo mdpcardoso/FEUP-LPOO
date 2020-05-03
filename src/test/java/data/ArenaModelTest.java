@@ -14,7 +14,8 @@ public class ArenaModelTest {
     public void setUp() {
         CubeModel cubeModel = Mockito.mock(CubeModel.class);
         playerModel = Mockito.mock(PlayerModel.class);
-        arenaModel = new ArenaModel(10, 15, playerModel, cubeModel);
+        OverlayModel overlayModel = Mockito.mock(OverlayModel.class);
+        arenaModel = new ArenaModel(10, 15, playerModel, cubeModel, overlayModel);
     }
 
     @Test

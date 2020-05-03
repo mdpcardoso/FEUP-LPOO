@@ -44,6 +44,7 @@ public class ArenaView {
 
 
             CubeModel cubeModel = arena.getCubeModel();
+
             for (Cube cube : cubeModel.getCubes()) {
                 if (arena.getPlayerModel().getPosition().equals(cube.getPosition())) {
                     collision = true;
@@ -59,11 +60,6 @@ public class ArenaView {
                 screen.refresh();
             }
 
-
-
-
-
-
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -76,17 +72,12 @@ public class ArenaView {
     public COMMAND getCommand() throws IOException {
         KeyStroke key = screen.pollInput();
 
-        /*if(collision) {
-            return COMMAND.EOF;
-        }
-        else {*/
-
-            if (key == null) return COMMAND.NOOP;
-            if (key.getKeyType() == KeyType.ArrowRight) return COMMAND.RIGHT;
-            if (key.getKeyType() == KeyType.ArrowLeft) return COMMAND.LEFT;
-            if (key.getKeyType() == KeyType.Character && key.getCharacter() == 'q') return COMMAND.EOF;
-            if (key.getKeyType() == KeyType.EOF) return COMMAND.EOF;
-        //}
+        if (key == null) return COMMAND.NOOP;
+        if (key.getKeyType() == KeyType.ArrowRight) return COMMAND.RIGHT;
+        if (key.getKeyType() == KeyType.ArrowLeft) return COMMAND.LEFT;
+        if (key.getKeyType() == KeyType.Character && key.getCharacter() == 'q') return COMMAND.EOF;
+        if (key.getKeyType() == KeyType.EOF) return COMMAND.EOF;
+        
         return COMMAND.NOOP;
     }
 }

@@ -7,7 +7,6 @@ import data.Cube;
 
 public class CubeView {
     public void draw(Screen screen, Cube cube) {
-        char cubeChar = 0x25a1;
-        screen.setCharacter(cube.getPosition().getX(), cube.getPosition().getY(), new TextCharacter(cubeChar));
+        screen.setCharacter(cube.getPosition().getX(), cube.getPosition().getY(), new TextCharacter((char) 0x25a1));
     }
 }

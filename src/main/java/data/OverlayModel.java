@@ -1,7 +1,8 @@
 package data;
 
 public class OverlayModel {
-    private long score;
+
+    private long score = 0;
 
     public long getScore() {
         return score;

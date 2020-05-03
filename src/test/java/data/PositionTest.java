@@ -36,4 +36,16 @@ public class PositionTest {
         Position left = new Position(-1, 0);
         assertEquals(left, pos.left());
     }
+
+    @Test
+    public void testHorizontalBy() {
+        assertEquals(new Position(-5, 0), pos.horizontalBy(-5));
+        assertEquals(new Position(10, 0), pos.horizontalBy(10));
+    }
+
+    @Test
+    public void testVerticalBy() {
+        assertEquals(new Position(0, -5), pos.verticalBy(-5));
+        assertEquals(new Position(0, 10), pos.verticalBy(10));
+    }
 }
