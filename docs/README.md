@@ -15,6 +15,14 @@ Our game is inspired by Cubefield. Cubefield is an endless runner game where the
 - the player can also get some extra powers by **hitting _certain_ obstacles**
 
 ## Design
+![Model Package](media/data_class.png)
+
+![View Package](media/gui_class.png)
+
+![Controller Package](media/rules_class.png)
+
+---
+
 ### Problem in Context
 There was a considerable amount of too tightly coupled code, accompanied by classes with too much responsibility. The lack of modularity caused both difficulty extending functionality and unit testing the code.
 ### The pattern
