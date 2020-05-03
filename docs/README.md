@@ -31,7 +31,9 @@ We applied the **MVC** architectural pattern. This pattern allows for **separati
 ### Implementation
 The game was separated in three units: the model (representing the data), the view (representing the interface with the user, both visuals and inputs) and the controller (representing the rules and core logic of the game).
 
-The **model** part aggregates classes that provide data for game entities such as the **player**, the **cubes** and the **arena** where they exist. The **view** classes are responsible for knowing how each entity is drawn, and the controllers' are responsible for the main loop and entity behavior. 
+The **model** part aggregates classes that provide data for game entities such as the **player**, the **cubes** and the **arena** where they exist. The **view** classes are responsible for knowing how each entity is drawn, and the **controllers** are responsible for the main loop and entity behavior. 
+
+![MVC Implementation](media/mvc.png)
 ### Consequences
 The use of MVC provided the following advantages:
 * Due to the looser coupling, dependency injection was possible allowing proper unit testing to happen.
