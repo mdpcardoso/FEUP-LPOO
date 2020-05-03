@@ -6,3 +6,4 @@ Our game is a 2D demake inspired by Cubefield, shown below. Cubefield is an endl
 The following is a screenshot representative of the current state of the game:
 
 ![GameScreenshot](screenshotGame.PNG)
+![GameOver](docs/media/game_over.png)
