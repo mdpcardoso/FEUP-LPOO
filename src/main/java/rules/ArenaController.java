@@ -38,7 +38,10 @@ public class ArenaController {
             cube.executeCommand(frameCounter, arena);
             overlay.executeCommand(frameCounter, arena);
 
-            gui.drawArena(arena);
+            if(!gui.collision){
+                gui.drawArena(arena);
+            }
+
             frameCounter += 1;
 
             Thread.sleep(start + 50 - System.currentTimeMillis());
