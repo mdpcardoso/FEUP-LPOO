@@ -54,9 +54,16 @@ The game loop pattern provided the following advantages:
 Still, there are some things to keep in mind:
 * The frame time must be set conservatively as *most* computers can not go back in time (at least not mine). Our implementation does not account for situations where the game goes over budget.
 * Time based events are effectively bound to the frame rate, providing less flexibility.
-## Known code smells
+## Known code smells and refactoring suggestions
+### Lack of Modularity 
+Despite our concern regarding the program as a whole, some classes such *ArenaView* still instantiate several viewer classes as attributes in the constructor. This makes the usage of different implementations more difficult while  preventing dependency injection and proper unit testing as a consequence. 
 
-## Refactoring:
+As a solution, these instances should be either passed as a constructor parameter or as a function parameter.
+
+### Long parameter list
+Classes such as *ArenaController* receive a long parameter list in its constructor. The list tends to increase whenever a new controller class is added.
+
+As a possible solution, a factory class instance could be passed so that the individual controller classes can then be instantiated.
 
 ## Tests
 ### Coverage
