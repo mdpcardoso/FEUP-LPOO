@@ -22,6 +22,8 @@ public class ArenaView {
 
     public enum COMMAND {RIGHT, LEFT, EOF, NOOP}
 
+    private boolean collision = false;
+
     public ArenaView(int width, int height) throws IOException {
         DefaultTerminalFactory terminalFactory = new DefaultTerminalFactory().setInitialTerminalSize(new TerminalSize(width, height));
         Terminal terminal = terminalFactory.createTerminal();
@@ -39,14 +41,25 @@ public class ArenaView {
     public void drawArena(ArenaModel arena) {
         try {
             screen.clear();
-            player.draw(screen, arena.getPlayerModel());
+
 
             CubeModel cubeModel = arena.getCubeModel();
-            for (Cube cube : cubeModel.getCubes())
-                cubeView.draw(screen, cube);
 
-            overlay.draw(screen, arena.getOverlayModel());
-            screen.refresh();
+            for (Cube cube : cubeModel.getCubes()) {
+                if (arena.getPlayerModel().getPosition().equals(cube.getPosition())) {
+                    collision = true;
+                }
+            }
+
+            if(!collision){
+                for (Cube cube : cubeModel.getCubes()) {
+                    cubeView.draw(screen, cube);
+                }
+                player.draw(screen, arena.getPlayerModel());
+                overlay.draw(screen, arena.getOverlayModel());
+                screen.refresh();
+            }
+
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -64,7 +77,7 @@ public class ArenaView {
         if (key.getKeyType() == KeyType.ArrowLeft) return COMMAND.LEFT;
         if (key.getKeyType() == KeyType.Character && key.getCharacter() == 'q') return COMMAND.EOF;
         if (key.getKeyType() == KeyType.EOF) return COMMAND.EOF;
-
+        
         return COMMAND.NOOP;
     }
 }
