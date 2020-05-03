@@ -19,7 +19,6 @@ public class ArenaView {
     private PlayerView player;
     private CubeView cubeView;
     private OverlayView overlay;
-    private CollisionView collisionView;
 
     public enum COMMAND {RIGHT, LEFT, EOF, NOOP}
 
@@ -48,17 +47,23 @@ public class ArenaView {
             for (Cube cube : cubeModel.getCubes()) {
                 if (arena.getPlayerModel().getPosition().equals(cube.getPosition())) {
                     collision = true;
-                    collisionView.draw(screen, arena.getPlayerModel());
                 }
-                cubeView.draw(screen, cube);
             }
 
-            player.draw(screen, arena.getPlayerModel());
+            if(!collision){
+                for (Cube cube : cubeModel.getCubes()) {
+                    cubeView.draw(screen, cube);
+                }
+                player.draw(screen, arena.getPlayerModel());
+                overlay.draw(screen, arena.getOverlayModel());
+                screen.refresh();
+            }
 
 
 
-            overlay.draw(screen, arena.getOverlayModel());
-            screen.refresh();
+
+
+
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -71,17 +76,17 @@ public class ArenaView {
     public COMMAND getCommand() throws IOException {
         KeyStroke key = screen.pollInput();
 
-        if(collision) {
+        /*if(collision) {
             return COMMAND.EOF;
         }
-        else {
+        else {*/
 
             if (key == null) return COMMAND.NOOP;
             if (key.getKeyType() == KeyType.ArrowRight) return COMMAND.RIGHT;
             if (key.getKeyType() == KeyType.ArrowLeft) return COMMAND.LEFT;
             if (key.getKeyType() == KeyType.Character && key.getCharacter() == 'q') return COMMAND.EOF;
             if (key.getKeyType() == KeyType.EOF) return COMMAND.EOF;
-        }
+        //}
         return COMMAND.NOOP;
     }
 }
