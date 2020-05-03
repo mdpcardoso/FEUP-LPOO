@@ -10,6 +10,7 @@ import com.googlecode.lanterna.terminal.Terminal;
 import data.ArenaModel;
 import data.Cube;
 import data.CubeModel;
+import data.OverlayModel;
 
 
 import java.io.IOException;
@@ -19,10 +20,11 @@ public class ArenaView {
     private PlayerView player;
     private CubeView cubeView;
     private OverlayView overlay;
+    private GameOverView gameover;
 
     public enum COMMAND {RIGHT, LEFT, EOF, NOOP}
 
-    private boolean collision = false;
+    public boolean collision = false;
 
     public ArenaView(int width, int height) throws IOException {
         DefaultTerminalFactory terminalFactory = new DefaultTerminalFactory().setInitialTerminalSize(new TerminalSize(width, height));
@@ -36,6 +38,7 @@ public class ArenaView {
         player = new PlayerView();
         cubeView = new CubeView();
         overlay = new OverlayView();
+        gameover = new GameOverView();
     }
 
     public void drawArena(ArenaModel arena) {
@@ -47,6 +50,8 @@ public class ArenaView {
 
             for (Cube cube : cubeModel.getCubes()) {
                 if (arena.getPlayerModel().getPosition().equals(cube.getPosition())) {
+                    gameover.draw(screen, arena, arena.getOverlayModel());
+                    screen.refresh();
                     collision = true;
                 }
             }
