@@ -6,15 +6,7 @@ import data.PlayerModel;
 import data.Position;
 import gui.ArenaView;
 
-import java.util.List;
-
 public class PlayerController {
-    private PlayerModel player;
-
-    public PlayerController(PlayerModel player) {
-        this.player = player;
-    }
-
     public void executeCommand(ArenaView.COMMAND command, ArenaModel arena) {
         switch (command) {
             case LEFT:
@@ -34,7 +26,7 @@ public class PlayerController {
             arena.setPlayerPosition(nextPosition);
         }
 
-        checkCollision(arena.getCubeModel().getCubes());
+        checkCollision(arena);
     }
 
     private boolean canMove(Position position, ArenaModel arena) {
@@ -63,10 +55,10 @@ public class PlayerController {
         }
     }
 
-    public void checkCollision(List<Cube> cubes) {
-        for (Cube cube : cubes) {
-            if (player.getPosition().equals(cube.getPosition())) {
-                player.setCollision(true);
+    public void checkCollision(ArenaModel arena) {
+        for (Cube cube : arena.getCubeModel().getCubes()) {
+            if (arena.getPlayerModel().getPosition().equals(cube.getPosition())) {
+                arena.getPlayerModel().setCollision(true);
                 break;
             }
         }
