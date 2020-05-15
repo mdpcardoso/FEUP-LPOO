@@ -36,7 +36,8 @@ public class ArenaController {
             this.executeCommand(command);
             player.executeCommand(command, arena);
             cube.executeCommand(frameCounter, arena);
-            overlay.executeCommand(frameCounter, arena);
+            if (!arena.getPlayerModel().getCollision())
+                overlay.executeCommand(frameCounter, arena);
             gui.drawArena(arena);
 
             frameCounter += 1;

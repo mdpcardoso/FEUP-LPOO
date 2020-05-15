@@ -2,7 +2,6 @@ package rules;
 
 import data.ArenaModel;
 import data.Cube;
-import data.PlayerModel;
 import data.Position;
 import gui.ArenaView;
 
