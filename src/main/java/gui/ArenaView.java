@@ -9,8 +9,6 @@ import com.googlecode.lanterna.terminal.DefaultTerminalFactory;
 import com.googlecode.lanterna.terminal.Terminal;
 import data.ArenaModel;
 import data.Cube;
-import data.CubeModel;
-import data.OverlayModel;
 
 
 import java.io.IOException;
@@ -23,8 +21,6 @@ public class ArenaView {
     private GameOverView gameover;
 
     public enum COMMAND {RIGHT, LEFT, EOF, NOOP}
-
-    public boolean collision = false;
 
     public ArenaView(int width, int height) throws IOException {
         DefaultTerminalFactory terminalFactory = new DefaultTerminalFactory().setInitialTerminalSize(new TerminalSize(width, height));
@@ -45,25 +41,16 @@ public class ArenaView {
         try {
             screen.clear();
 
-
-            CubeModel cubeModel = arena.getCubeModel();
-
-            for (Cube cube : cubeModel.getCubes()) {
-                if (arena.getPlayerModel().getPosition().equals(cube.getPosition())) {
-                    gameover.draw(screen, arena, arena.getOverlayModel());
-                    screen.refresh();
-                    collision = true;
-                }
-            }
-
-            if(!collision){
-                for (Cube cube : cubeModel.getCubes()) {
+            if (arena.getPlayerModel().getCollision()) {
+                gameover.draw(screen, arena, arena.getOverlayModel());
+            } else {
+                for (Cube cube : arena.getCubeModel().getCubes()) {
                     cubeView.draw(screen, cube);
                 }
                 player.draw(screen, arena.getPlayerModel());
                 overlay.draw(screen, arena.getOverlayModel());
-                screen.refresh();
             }
+            screen.refresh();
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -82,7 +69,7 @@ public class ArenaView {
         if (key.getKeyType() == KeyType.ArrowLeft) return COMMAND.LEFT;
         if (key.getKeyType() == KeyType.Character && key.getCharacter() == 'q') return COMMAND.EOF;
         if (key.getKeyType() == KeyType.EOF) return COMMAND.EOF;
-        
+
         return COMMAND.NOOP;
     }
 }

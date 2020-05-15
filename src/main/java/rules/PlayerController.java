@@ -1,10 +1,20 @@
 package rules;
 
 import data.ArenaModel;
+import data.Cube;
+import data.PlayerModel;
 import data.Position;
 import gui.ArenaView;
 
+import java.util.List;
+
 public class PlayerController {
+    private PlayerModel player;
+
+    public PlayerController(PlayerModel player) {
+        this.player = player;
+    }
+
     public void executeCommand(ArenaView.COMMAND command, ArenaModel arena) {
         switch (command) {
             case LEFT:
@@ -23,6 +33,8 @@ public class PlayerController {
         if (canMove(nextPosition, arena)) {
             arena.setPlayerPosition(nextPosition);
         }
+
+        checkCollision(arena.getCubeModel().getCubes());
     }
 
     private boolean canMove(Position position, ArenaModel arena) {
@@ -51,4 +63,12 @@ public class PlayerController {
         }
     }
 
+    public void checkCollision(List<Cube> cubes) {
+        for (Cube cube : cubes) {
+            if (player.getPosition().equals(cube.getPosition())) {
+                player.setCollision(true);
+                break;
+            }
+        }
+    }
 }

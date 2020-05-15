@@ -19,7 +19,7 @@ public class Application {
 
         ArenaView gui = new ArenaView(60, 30);
 
-        PlayerController playerController = new PlayerController();
+        PlayerController playerController = new PlayerController(playerModel);
         CubeController cubeController = new CubeController(30, 1);
         ArenaController controller = new ArenaController(gui, arena, playerController, cubeController, new OverlayController());
         controller.start();
