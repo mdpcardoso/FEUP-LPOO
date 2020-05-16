@@ -13,6 +13,7 @@ public class ArenaController {
     private final ArenaModel arena;
 
     private State currentState;
+    private long frameCounter;
 
     public ArenaController(ArenaView gui, ArenaModel arena, PlayerController player, CubeController cube, OverlayController overlay) {
         this.arena = arena;
@@ -22,10 +23,19 @@ public class ArenaController {
         this.overlay = overlay;
 
         this.currentState = new GameState();
+        this.frameCounter = 0;
     }
 
     public void setCurrentState(State currentState) {
         this.currentState = currentState;
+    }
+
+    public long getFrameCounter() {
+        return frameCounter;
+    }
+
+    public void setFrameCounter(long frameCounter) {
+        this.frameCounter = frameCounter;
     }
 
     public ArenaView getGui() {
@@ -54,16 +64,15 @@ public class ArenaController {
 
     public void start() throws IOException, InterruptedException {
         ArenaView.COMMAND command = ArenaView.COMMAND.NOOP;
-        long frameCounter = 0;
 
         while (command != ArenaView.COMMAND.EOF) {
             long start = System.currentTimeMillis();
             command = gui.getCommand();
 
             this.executeCommand(command);
-            currentState.execute(frameCounter, command, this);
+            currentState.execute(command, this);
 
-            frameCounter += 1;
+            this.frameCounter += 1;
             Thread.sleep(start + 50 - System.currentTimeMillis());
         }
     }

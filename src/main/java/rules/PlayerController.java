@@ -30,8 +30,7 @@ public class PlayerController {
 
     private boolean canMove(Position position, ArenaModel arena) {
         if (position.getX() < 0 || position.getX() >= arena.getWidth()) return false;
-        if (position.getY() < 0 || position.getY() >= arena.getHeight()) return false;
-        return true;
+        return position.getY() >= 0 && position.getY() < arena.getHeight();
     }
 
     private void handleDeceleration(ArenaModel arena, int drag) {
@@ -58,8 +57,9 @@ public class PlayerController {
         for (Cube cube : arena.getCubeModel().getCubes()) {
             if (arena.getPlayerModel().getPosition().equals(cube.getPosition())) {
                 arena.getPlayerModel().setCollision(true);
-                break;
+                return;
             }
         }
+        arena.getPlayerModel().setCollision(false);
     }
 }

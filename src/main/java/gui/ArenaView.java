@@ -14,13 +14,13 @@ import data.Cube;
 import java.io.IOException;
 
 public class ArenaView {
-    private Screen screen;
-    private PlayerView player;
-    private CubeView cubeView;
-    private OverlayView overlay;
-    private GameOverView gameover;
+    private final Screen screen;
+    private final PlayerView player;
+    private final CubeView cubeView;
+    private final OverlayView overlay;
+    private final GameOverView gameover;
 
-    public enum COMMAND {RIGHT, LEFT, EOF, NOOP}
+    public enum COMMAND {ACCEPT, RIGHT, LEFT, EOF, NOOP}
 
     public ArenaView(int width, int height) throws IOException {
         DefaultTerminalFactory terminalFactory = new DefaultTerminalFactory().setInitialTerminalSize(new TerminalSize(width, height));
@@ -76,6 +76,7 @@ public class ArenaView {
         if (key == null) return COMMAND.NOOP;
         if (key.getKeyType() == KeyType.ArrowRight) return COMMAND.RIGHT;
         if (key.getKeyType() == KeyType.ArrowLeft) return COMMAND.LEFT;
+        if (key.getKeyType() == KeyType.Enter) return COMMAND.ACCEPT;
         if (key.getKeyType() == KeyType.Character && key.getCharacter() == 'q') return COMMAND.EOF;
         if (key.getKeyType() == KeyType.EOF) return COMMAND.EOF;
 

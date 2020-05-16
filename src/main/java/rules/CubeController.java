@@ -9,8 +9,8 @@ import java.util.List;
 import java.util.Random;
 
 public class CubeController {
-    private int cubeAmount;
-    private int maxSpeed;
+    private final int cubeAmount;
+    private final int maxSpeed;
 
     public CubeController(int cubeAmount, int maxSpeed) {
         this.cubeAmount = cubeAmount;
@@ -51,6 +51,13 @@ public class CubeController {
                 toRemove.add(cube);
 
         cubes.removeAll(toRemove);
+    }
+
+    public void removeAllCubes(ArenaModel arena) {
+        CubeModel cubeModel = arena.getCubeModel();
+
+        List<Cube> cubes = cubeModel.getCubes();
+        cubes.clear();
     }
 
     public void executeCommand(long frames, ArenaModel arena) {

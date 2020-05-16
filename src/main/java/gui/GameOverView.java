@@ -15,6 +15,6 @@ public class GameOverView {
         textGraphics.putString(arena.getWidth() / 2 - 3, arena.getHeight() / 2 - 3, "SCORE: ");
         textGraphics.putString(arena.getWidth() / 2 + 3, arena.getHeight() / 2 - 3, String.valueOf(score));
         textGraphics.putString(arena.getWidth() / 2 - 4, arena.getHeight() / 2, "GAME OVER");
-        textGraphics.putString(arena.getWidth() / 2 - 7, arena.getHeight() / 2 + 3, "PRESS Q TO EXIT");
+        textGraphics.putString(arena.getWidth() / 2 - 18, arena.getHeight() / 2 + 2, "PRESS ENTER TO PLAY AGAIN OR Q TO EXIT");
     }
 }

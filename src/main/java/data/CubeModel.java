@@ -3,10 +3,10 @@ package data;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CubeModel{
-    private List<Cube> cubes;
+public class CubeModel {
+    private final List<Cube> cubes;
 
-    public CubeModel(){
+    public CubeModel() {
         cubes = new ArrayList<>();
     }
 
@@ -17,6 +17,4 @@ public class CubeModel{
     public void addCube(int x, int speed) {
         cubes.add(new Cube(new Position(x, 0), speed));
     }
-
-
 }

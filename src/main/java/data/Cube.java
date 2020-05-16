@@ -1,7 +1,7 @@
 package data;
 
 public class Cube extends Element {
-    private int speed;
+    private final int speed;
 
     public Cube(Position position, int speed) {
         super(position.getX(), position.getY());
