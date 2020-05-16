@@ -22,7 +22,7 @@ public class ArenaController {
         this.cube = cube;
         this.overlay = overlay;
 
-        this.currentState = new GameState();
+        this.currentState = new GameStartState();
         this.frameCounter = 0;
     }
 

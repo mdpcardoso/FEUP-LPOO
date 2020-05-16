@@ -19,6 +19,7 @@ public class ArenaView {
     private final CubeView cubeView;
     private final OverlayView overlay;
     private final GameOverView gameover;
+    private final GameStartView gameStart;
 
     public enum COMMAND {ACCEPT, RIGHT, LEFT, EOF, NOOP}
 
@@ -35,6 +36,7 @@ public class ArenaView {
         cubeView = new CubeView();
         overlay = new OverlayView();
         gameover = new GameOverView();
+        gameStart = new GameStartView();
     }
 
     public void drawGame(ArenaModel arena) {
@@ -56,8 +58,23 @@ public class ArenaView {
 
     public void drawGameOver(ArenaModel arena) {
         screen.clear();
+        gameover.draw(screen, arena);
 
-        gameover.draw(screen, arena, arena.getOverlayModel());
+        try {
+            screen.refresh();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void drawGameStart(ArenaModel arena) {
+        screen.clear();
+
+        for (Cube cube : arena.getCubeModel().getCubes()) {
+            cubeView.draw(screen, cube);
+        }
+
+        gameStart.draw(screen, arena);
 
         try {
             screen.refresh();
