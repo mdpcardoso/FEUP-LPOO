@@ -3,7 +3,6 @@ Our game is a 2D demake inspired by Cubefield, shown below. Cubefield is an endl
 
 ![Cubefield](https://i.redd.it/dpz1b3j57me11.jpg)
 
-The following is a screenshot representative of the current state of the game:
+The following is a video representative of the current game state loop:
 
-![GameScreenshot](screenshotGame.PNG)
-![GameOver](docs/media/game_over.png)
+![GameState](docs/media/game_state.gif)

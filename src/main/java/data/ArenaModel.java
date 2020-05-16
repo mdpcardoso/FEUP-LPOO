@@ -1,11 +1,11 @@
 package data;
 
 public class ArenaModel {
-    private int width;
-    private int height;
-    private PlayerModel player;
-    private CubeModel cube;
-    private OverlayModel overlay;
+    private final int width;
+    private final int height;
+    private final PlayerModel player;
+    private final CubeModel cube;
+    private final OverlayModel overlay;
 
 
     public ArenaModel(int width, int height, PlayerModel player, CubeModel cube, OverlayModel overlay) {

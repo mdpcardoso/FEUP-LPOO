@@ -14,13 +14,14 @@ import data.Cube;
 import java.io.IOException;
 
 public class ArenaView {
-    private Screen screen;
-    private PlayerView player;
-    private CubeView cubeView;
-    private OverlayView overlay;
-    private GameOverView gameover;
+    private final Screen screen;
+    private final PlayerView player;
+    private final CubeView cubeView;
+    private final OverlayView overlay;
+    private final GameOverView gameover;
+    private final GameStartView gameStart;
 
-    public enum COMMAND {RIGHT, LEFT, EOF, NOOP}
+    public enum COMMAND {ACCEPT, RIGHT, LEFT, EOF, NOOP}
 
     public ArenaView(int width, int height) throws IOException {
         DefaultTerminalFactory terminalFactory = new DefaultTerminalFactory().setInitialTerminalSize(new TerminalSize(width, height));
@@ -35,23 +36,48 @@ public class ArenaView {
         cubeView = new CubeView();
         overlay = new OverlayView();
         gameover = new GameOverView();
+        gameStart = new GameStartView();
     }
 
-    public void drawArena(ArenaModel arena) {
+    public void drawGame(ArenaModel arena) {
+        screen.clear();
+
+        for (Cube cube : arena.getCubeModel().getCubes()) {
+            cubeView.draw(screen, cube);
+        }
+
+        player.draw(screen, arena.getPlayerModel());
+        overlay.draw(screen, arena.getOverlayModel());
+
         try {
-            screen.clear();
-
-            if (arena.getPlayerModel().getCollision()) {
-                gameover.draw(screen, arena, arena.getOverlayModel());
-            } else {
-                for (Cube cube : arena.getCubeModel().getCubes()) {
-                    cubeView.draw(screen, cube);
-                }
-                player.draw(screen, arena.getPlayerModel());
-                overlay.draw(screen, arena.getOverlayModel());
-            }
             screen.refresh();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
+    public void drawGameOver(ArenaModel arena) {
+        screen.clear();
+        gameover.draw(screen, arena);
+
+        try {
+            screen.refresh();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void drawGameStart(ArenaModel arena) {
+        screen.clear();
+
+        for (Cube cube : arena.getCubeModel().getCubes()) {
+            cubeView.draw(screen, cube);
+        }
+
+        gameStart.draw(screen, arena);
+
+        try {
+            screen.refresh();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -67,6 +93,7 @@ public class ArenaView {
         if (key == null) return COMMAND.NOOP;
         if (key.getKeyType() == KeyType.ArrowRight) return COMMAND.RIGHT;
         if (key.getKeyType() == KeyType.ArrowLeft) return COMMAND.LEFT;
+        if (key.getKeyType() == KeyType.Enter) return COMMAND.ACCEPT;
         if (key.getKeyType() == KeyType.Character && key.getCharacter() == 'q') return COMMAND.EOF;
         if (key.getKeyType() == KeyType.EOF) return COMMAND.EOF;
 
