@@ -37,21 +37,30 @@ public class ArenaView {
         gameover = new GameOverView();
     }
 
-    public void drawArena(ArenaModel arena) {
+    public void drawGame(ArenaModel arena) {
+        screen.clear();
+
+        for (Cube cube : arena.getCubeModel().getCubes()) {
+            cubeView.draw(screen, cube);
+        }
+
+        player.draw(screen, arena.getPlayerModel());
+        overlay.draw(screen, arena.getOverlayModel());
+
         try {
-            screen.clear();
-
-            if (arena.getPlayerModel().getCollision()) {
-                gameover.draw(screen, arena, arena.getOverlayModel());
-            } else {
-                for (Cube cube : arena.getCubeModel().getCubes()) {
-                    cubeView.draw(screen, cube);
-                }
-                player.draw(screen, arena.getPlayerModel());
-                overlay.draw(screen, arena.getOverlayModel());
-            }
             screen.refresh();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
+    public void drawGameOver(ArenaModel arena) {
+        screen.clear();
+
+        gameover.draw(screen, arena, arena.getOverlayModel());
+
+        try {
+            screen.refresh();
         } catch (IOException e) {
             e.printStackTrace();
         }
