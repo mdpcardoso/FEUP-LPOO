@@ -54,6 +54,19 @@ The game loop pattern provided the following advantages:
 Still, there are some things to keep in mind:
 * The frame time must be set conservatively as *most* computers can not go back in time (at least not mine). Our implementation does not account for situations where the game goes over budget.
 * Time based events are effectively bound to the frame rate, providing less flexibility.
+---
+### Problem in context
+Soon after the game got to a playable state, the need for a more robust menu system became apparent. This system should also be capable of dealing with arbitrary transitions between game/menu states. At first, we implemented it in a not very correct way, through conditional logic in the View. This goes against the principles of the MVC pattern as well as the Single Responsibility Principle.
+### The pattern
+We applied the **state** pattern. The pattern defines a set of states in which the state machine can be in, though it can only be in one state at a time. Each state is responsible for listening to inputs or events so that it can trigger a transition to the next state.
+### Implementation
+We start by setting a common interface for each state consisting of an execute() method. Our main Controller class starts with a default state (a start menu, GameStartState()). The currently set state's execute() method is run in each iteration of the game's main loop. The method then executes and in the end checks whether the inputs or events trigger a change to a new state which is then set.
+### Consequences
+Using the state pattern provided some advantages:
+* A clearly defined state, decreasing the possibility of ending up in 'intermediate' or broken state.
+* The logic was moved to where it belongs and the View's complexity was decreased.
+* It became fairly easy to add, remove or change the flow of states.
+---
 ## Known code smells and refactoring suggestions
 ### Lack of Modularity 
 Despite our concern regarding the program as a whole, some classes such *ArenaView* still instantiate several viewer classes as attributes in the constructor. This makes the usage of different implementations more difficult while  preventing dependency injection and proper unit testing as a consequence. 
