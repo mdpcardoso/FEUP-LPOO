@@ -12,7 +12,7 @@ public class GameOverView {
         TextGraphics textGraphics = screen.newTextGraphics();
         textGraphics.setForegroundColor(TextColor.ANSI.RED);
         textGraphics.putString(arena.getWidth() / 2 - 3, arena.getHeight() / 2 - 3, "SCORE: ");
-        textGraphics.putString(arena.getWidth() / 2 + 3, arena.getHeight() / 2 - 3, String.valueOf(score));
+        textGraphics.putString(arena.getWidth() / 2 + 3, arena.getHeight() / 2 - 3, String.valueOf(score / 10));
         textGraphics.putString(arena.getWidth() / 2 - 4, arena.getHeight() / 2, "GAME OVER");
         textGraphics.putString(arena.getWidth() / 2 - 18, arena.getHeight() / 2 + 2, "PRESS ENTER TO PLAY AGAIN OR Q TO EXIT");
     }

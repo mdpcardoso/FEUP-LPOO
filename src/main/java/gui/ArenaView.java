@@ -20,6 +20,7 @@ public class ArenaView {
     private final OverlayView overlay;
     private final GameOverView gameover;
     private final GameStartView gameStart;
+    private final GamePauseView gamePause;
 
     public enum COMMAND {ACCEPT, RIGHT, LEFT, EOF, NOOP}
 
@@ -37,6 +38,7 @@ public class ArenaView {
         overlay = new OverlayView();
         gameover = new GameOverView();
         gameStart = new GameStartView();
+        gamePause = new GamePauseView();
     }
 
     public void drawGame(ArenaModel arena) {
@@ -75,6 +77,16 @@ public class ArenaView {
         }
 
         gameStart.draw(screen, arena);
+
+        try {
+            screen.refresh();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void drawGamePause(ArenaModel arena) {
+        gamePause.draw(screen, arena);
 
         try {
             screen.refresh();
