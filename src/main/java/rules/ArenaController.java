@@ -34,10 +34,6 @@ public class ArenaController {
         return frameCounter;
     }
 
-    public void setFrameCounter(long frameCounter) {
-        this.frameCounter = frameCounter;
-    }
-
     public ArenaView getGui() {
         return gui;
     }

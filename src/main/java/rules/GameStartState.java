@@ -10,7 +10,6 @@ public class GameStartState implements State {
 
         if (command == ArenaView.COMMAND.ACCEPT) {
             controller.getCube().removeAllCubes(controller.getArena());
-            controller.setFrameCounter(0);
             controller.setCurrentState(new GameState());
         }
     }
