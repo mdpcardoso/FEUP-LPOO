@@ -4,8 +4,8 @@ import data.ArenaModel;
 import data.OverlayModel;
 
 public class OverlayController {
-    public void executeCommand(long frame, ArenaModel arena) {
+    public void executeCommand(ArenaModel arena) {
         OverlayModel model = arena.getOverlayModel();
-        model.setScore(frame / 10);
+        model.setScore(model.getScore() + 1);
     }
 }
