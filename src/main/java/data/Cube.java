@@ -1,6 +1,6 @@
 package data;
 
-public class Cube extends Element {
+public abstract class Cube extends Element {
     private final int speed;
 
     public Cube(Position position, int speed) {

@@ -53,13 +53,12 @@ public class PlayerController {
         }
     }
 
-    public void checkCollision(ArenaModel arena) {
+    public Cube checkCollision(ArenaModel arena) {
         for (Cube cube : arena.getCubeModel().getCubes()) {
             if (arena.getPlayerModel().getPosition().equals(cube.getPosition())) {
-                arena.getPlayerModel().setCollision(true);
-                return;
+                return cube;
             }
         }
-        arena.getPlayerModel().setCollision(false);
+        return null;
     }
 }

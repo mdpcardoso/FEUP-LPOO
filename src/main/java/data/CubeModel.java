@@ -14,7 +14,7 @@ public class CubeModel {
         return cubes;
     }
 
-    public void addCube(int x, int speed) {
-        cubes.add(new Cube(new Position(x, 0), speed));
+    public void addCube(Cube cube) {
+        cubes.add(cube);
     }
 }

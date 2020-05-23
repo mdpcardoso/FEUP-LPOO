@@ -69,7 +69,7 @@ public class ArenaController {
             currentState.execute(command, this);
 
             this.frameCounter += 1;
-            Thread.sleep(start + 50 - System.currentTimeMillis());
+            Thread.sleep(start + 45 - System.currentTimeMillis());
         }
     }
 }

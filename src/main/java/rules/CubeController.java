@@ -1,8 +1,6 @@
 package rules;
 
-import data.ArenaModel;
-import data.CubeModel;
-import data.Cube;
+import data.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,7 +26,10 @@ public class CubeController {
 
         if (cube.getCubes().size() < cubeAmount) {
             Random random = new Random();
-            cube.addCube(random.nextInt(arena.getWidth()), this.maxSpeed);
+            if (random.nextFloat() < 0.9)
+                cube.addCube(new NormalCube(new Position(random.nextInt(arena.getWidth()), 0) , this.maxSpeed));
+            else
+                cube.addCube(new PowerCube(new Position(random.nextInt(arena.getWidth()), 0) , this.maxSpeed));
         }
     }
 
