@@ -15,7 +15,7 @@ public class CubeTest {
         Mockito.when(position.getX()).thenReturn(5);
         Mockito.when(position.getY()).thenReturn(10);
 
-        cube = new Cube(position, 30);
+        cube = new NormalCube(position, 30);
     }
 
     @Test

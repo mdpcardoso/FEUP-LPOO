@@ -15,12 +15,13 @@ public class ArenaController {
     private State currentState;
     private long frameCounter;
 
-    public ArenaController(ArenaView gui, ArenaModel arena, PlayerController player, CubeController cube, OverlayController overlay) {
+    public ArenaController(ArenaView gui, ArenaModel arena, ControllerFactory factory) {
         this.arena = arena;
         this.gui = gui;
-        this.player = player;
-        this.cube = cube;
-        this.overlay = overlay;
+
+        this.player = factory.getPlayerController();
+        this.cube = factory.getCubeController();
+        this.overlay = factory.getOverlayController();
 
         this.currentState = new GameStartState();
         this.frameCounter = 0;

@@ -2,7 +2,7 @@ package gui;
 
 import com.googlecode.lanterna.TextCharacter;
 import com.googlecode.lanterna.screen.TerminalScreen;
-import data.Cube;
+import data.NormalCube;
 import data.Position;
 import org.junit.Test;
 import org.mockito.Mockito;
@@ -10,9 +10,9 @@ import org.mockito.Mockito;
 public class CubeViewTest {
 
     @Test
-    public void draw() {
+    public void drawNormalCube() {
         TerminalScreen screen = Mockito.mock(TerminalScreen.class);
-        Cube cube = Mockito.mock(Cube.class);
+        NormalCube cube = Mockito.mock(NormalCube.class);
 
         Mockito.when(cube.getPosition()).thenReturn(new Position(1, 2));
 
