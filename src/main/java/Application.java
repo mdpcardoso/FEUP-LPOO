@@ -3,6 +3,7 @@ import data.CubeModel;
 import data.OverlayModel;
 import data.PlayerModel;
 import gui.ArenaView;
+import gui.ViewFactory;
 import rules.*;
 
 import java.io.IOException;
@@ -13,7 +14,8 @@ public class Application {
         CubeModel cubeModel = new CubeModel();
         ArenaModel arena = new ArenaModel(60, 30, playerModel, cubeModel, new OverlayModel());
 
-        ArenaView gui = new ArenaView(60, 30);
+        ViewFactory viewFactory = new ViewFactory();
+        ArenaView gui = new ArenaView(60, 30, viewFactory);
 
         ControllerFactory controllerFactory = new ControllerFactory();
         ArenaController controller = new ArenaController(gui, arena, controllerFactory);

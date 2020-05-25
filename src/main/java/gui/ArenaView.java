@@ -24,7 +24,7 @@ public class ArenaView {
 
     public enum COMMAND {ACCEPT, RIGHT, LEFT, EOF, NOOP}
 
-    public ArenaView(int width, int height) throws IOException {
+    public ArenaView(int width, int height, ViewFactory view) throws IOException {
         DefaultTerminalFactory terminalFactory = new DefaultTerminalFactory().setInitialTerminalSize(new TerminalSize(width, height));
         Terminal terminal = terminalFactory.createTerminal();
 
@@ -33,12 +33,12 @@ public class ArenaView {
         screen.startScreen();
         screen.doResizeIfNecessary();
 
-        player = new PlayerView();
-        cubeView = new CubeView();
-        overlay = new OverlayView();
-        gameover = new GameOverView();
-        gameStart = new GameStartView();
-        gamePause = new GamePauseView();
+        player = view.getPlayerView();
+        cubeView = view.getCubeView();
+        overlay = view.getOverlayView();
+        gameover = view.getGameOverView();
+        gameStart = view.getGameStartView();
+        gamePause = view.getGamePauseView();
     }
 
     public void drawGame(ArenaModel arena) {
