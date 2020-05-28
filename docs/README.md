@@ -1,6 +1,8 @@
 # LPOO_T5G2 - Cubefield
 Our game is inspired by Cubefield. Cubefield is an endless runner game where the players' reactions are tested in order to avoid colliding with fast moving blocks.
 
+![GameState](media/game_state.gif)
+
 ## Features
 ### So far:
 - Movement - the character moves horizontally according to input

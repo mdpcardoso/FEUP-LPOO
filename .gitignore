@@ -4,7 +4,9 @@
 .vscode/
 out/
 build/
+bin/
 *.iml
 *.ipr
 *.iws
 .project
+.classpath
