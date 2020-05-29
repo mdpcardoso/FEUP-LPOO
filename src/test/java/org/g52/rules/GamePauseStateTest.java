@@ -1,12 +1,12 @@
 package org.g52.rules;
 
+import org.g52.data.*;
 import org.g52.gui.ArenaView;
 import org.junit.Before;
 import org.junit.Test;
-import org.mockito.ArgumentMatchers;
 import org.mockito.Mockito;
 
-import static org.mockito.Mockito.RETURNS_DEEP_STUBS;
+import static org.junit.Assert.assertEquals;
 
 public class GamePauseStateTest {
     private ArenaController arenaController;
@@ -14,7 +14,13 @@ public class GamePauseStateTest {
 
     @Before
     public void setup() {
-        arenaController = Mockito.mock(ArenaController.class, RETURNS_DEEP_STUBS);
+        PlayerModel playerModel = new PlayerModel(5, 5);
+        CubeModel cubeModel = new CubeModel();
+        OverlayModel overlayModel = new OverlayModel();
+        ArenaModel arenaModel = new ArenaModel(10, 10, playerModel, cubeModel, overlayModel);
+
+        ControllerFactory controllerFactory = new ControllerFactory();
+        arenaController = new ArenaController(Mockito.mock(ArenaView.class), arenaModel, controllerFactory);
         gamePauseState = new GamePauseState();
     }
 
@@ -22,15 +28,13 @@ public class GamePauseStateTest {
     public void execute() {
         gamePauseState.execute(ArenaView.COMMAND.ACCEPT, arenaController);
 
-        Mockito.verify(arenaController.getGui()).drawGamePause(arenaController.getArena());
-        Mockito.verify(arenaController).setCurrentState(ArgumentMatchers.any(GameState.class));
+        assertEquals(GameState.class, arenaController.getCurrentState().getClass());
     }
 
     @Test
     public void executeNoAccept() {
         gamePauseState.execute(ArenaView.COMMAND.EOF, arenaController);
 
-        Mockito.verify(arenaController.getGui()).drawGamePause(arenaController.getArena());
-        Mockito.verify(arenaController, Mockito.never()).setCurrentState(ArgumentMatchers.any(GameState.class));
+        assertEquals(GameStartState.class, arenaController.getCurrentState().getClass());
     }
 }
