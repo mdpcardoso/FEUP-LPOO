@@ -6,7 +6,6 @@ import org.junit.Test;
 import org.mockito.ArgumentMatchers;
 import org.mockito.Mockito;
 
-import static org.junit.Assert.*;
 import static org.mockito.Mockito.RETURNS_DEEP_STUBS;
 
 public class GameStartStateTest {
