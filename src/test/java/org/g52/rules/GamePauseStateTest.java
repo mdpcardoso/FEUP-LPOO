@@ -1,6 +1,7 @@
 package org.g52.rules;
 
 import org.g52.gui.ArenaView;
+import org.junit.Before;
 import org.junit.Test;
 import org.mockito.ArgumentMatchers;
 import org.mockito.Mockito;
@@ -8,11 +9,17 @@ import org.mockito.Mockito;
 import static org.mockito.Mockito.RETURNS_DEEP_STUBS;
 
 public class GamePauseStateTest {
+    private ArenaController arenaController;
+    private GamePauseState gamePauseState;
+
+    @Before
+    public void setup() {
+        arenaController = Mockito.mock(ArenaController.class, RETURNS_DEEP_STUBS);
+        gamePauseState = new GamePauseState();
+    }
 
     @Test
     public void execute() {
-        ArenaController arenaController = Mockito.mock(ArenaController.class, RETURNS_DEEP_STUBS);
-        GamePauseState gamePauseState = new GamePauseState();
         gamePauseState.execute(ArenaView.COMMAND.ACCEPT, arenaController);
 
         Mockito.verify(arenaController.getGui()).drawGamePause(arenaController.getArena());
@@ -21,8 +28,6 @@ public class GamePauseStateTest {
 
     @Test
     public void executeNoAccept() {
-        ArenaController arenaController = Mockito.mock(ArenaController.class, RETURNS_DEEP_STUBS);
-        GamePauseState gamePauseState = new GamePauseState();
         gamePauseState.execute(ArenaView.COMMAND.EOF, arenaController);
 
         Mockito.verify(arenaController.getGui()).drawGamePause(arenaController.getArena());
