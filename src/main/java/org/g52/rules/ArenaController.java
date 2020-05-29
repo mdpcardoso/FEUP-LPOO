@@ -31,6 +31,10 @@ public class ArenaController {
         this.currentState = currentState;
     }
 
+    public State getCurrentState() {
+        return currentState;
+    }
+
     public long getFrameCounter() {
         return frameCounter;
     }
