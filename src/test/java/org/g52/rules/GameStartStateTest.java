@@ -2,15 +2,11 @@ package org.g52.rules;
 
 import org.g52.data.*;
 import org.g52.gui.ArenaView;
-import org.g52.gui.ViewFactory;
 import org.junit.Before;
 import org.junit.Test;
-import org.mockito.ArgumentMatchers;
 import org.mockito.Mockito;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
-import static org.mockito.Mockito.RETURNS_DEEP_STUBS;
 
 public class GameStartStateTest {
     private GameStartState gameStartState;
