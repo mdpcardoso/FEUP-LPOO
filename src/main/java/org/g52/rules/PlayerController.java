@@ -29,8 +29,7 @@ public class PlayerController {
     }
 
     private boolean canMove(Position position, ArenaModel arena) {
-        if (position.getX() < 0 || position.getX() >= arena.getWidth()) return false;
-        return position.getY() >= 0 && position.getY() < arena.getHeight();
+        return position.getX() >= 0 && position.getX() < arena.getWidth();
     }
 
     private void handleDeceleration(ArenaModel arena, int drag) {
