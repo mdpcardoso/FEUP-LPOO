@@ -1,9 +1,11 @@
-package org.g52.rules;
+package org.g52.rules.gamestate;
 
 import org.g52.data.NormalCube;
 import org.g52.data.Position;
 import org.g52.data.PowerCube;
 import org.g52.gui.ArenaView;
+import org.g52.rules.ArenaController;
+import org.g52.rules.State;
 
 public class GameState implements State {
     @Override
