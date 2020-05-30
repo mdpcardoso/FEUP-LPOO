@@ -5,7 +5,6 @@ import org.g52.data.Position;
 import org.g52.data.PowerCube;
 import org.g52.gui.ArenaView;
 import org.g52.rules.ArenaController;
-import org.g52.rules.State;
 
 public class GameState implements State {
     @Override

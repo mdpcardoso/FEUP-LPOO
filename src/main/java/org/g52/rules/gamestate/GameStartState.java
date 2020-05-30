@@ -2,7 +2,6 @@ package org.g52.rules.gamestate;
 
 import org.g52.gui.ArenaView;
 import org.g52.rules.ArenaController;
-import org.g52.rules.State;
 
 public class GameStartState implements State {
     @Override
