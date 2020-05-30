@@ -5,7 +5,7 @@ Our game is inspired by Cubefield. Cubefield is an endless runner game where the
 
 ## Features
 ### Implemented:
-- Movement 
+- **Movement** 
 
     • the character moves horizontally according to input (left or right keys)
     
@@ -14,7 +14,7 @@ Our game is inspired by Cubefield. Cubefield is an endless runner game where the
     • cubes fall with **adjustable speed**
     
     
-- Gameplay 
+- **Gameplay** 
 
     • The **first menu** the player is presented shows what the game looks like when playing and asks the player to **press Enter** to start
     
@@ -25,14 +25,14 @@ Our game is inspired by Cubefield. Cubefield is an endless runner game where the
     • When the player loses a **Game Over menu** appears: this menu allows the player to press Enter to **play again** or Q to **exit the game** 
     
     
-- Score 
+- **Score** 
 
     • During the course of the game **score is kept track in real-time** and displayed in an overlay on the top left corner of the screen
     
     • When the **player loses** his score is also shown in the **Game Over menu**
     
     
-- Collisions 
+- **Collisions** 
 
     • **Collisions are being detected**, both when colliding the good cubes and the bad cubes;
     
