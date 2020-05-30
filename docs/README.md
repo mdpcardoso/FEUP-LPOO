@@ -8,26 +8,38 @@ Our game is inspired by Cubefield. Cubefield is an endless runner game where the
 - Movement 
 
     • the character moves horizontally according to input (left or right keys)
+    
     • the character has **weight** due to acceleration and drag implementation; Makes the player's movement more natural
+    
     • cubes fall with **adjustable speed**
+    
     
 - Gameplay 
 
     • The **first menu** the player is presented shows what the game looks like when playing and asks the player to **press Enter** to start
+    
     • After pressing enter, cubes start falling: **good cubes** (in green) and **bad cubes** (the hollow cube boxes)
+    
     • By pressing'P' the player can **pause the game** in its current state; To **resume the game** the player can press Enter
+    
     • When the player loses a **Game Over menu** appears: this menu allows the player to press Enter to **play again** or Q to **exit the game** 
+    
     
 - Score 
 
     • During the course of the game **score is kept track in real-time** and displayed in an overlay on the top left corner of the screen
+    
     • When the **player loses** his score is also shown in the **Game Over menu**
+    
     
 - Collisions 
 
     • **Collisions are being detected**, both when colliding the good cubes and the bad cubes;
+    
     • When colliding with a **bad cube**, the player **loses** the game instantly
+    
     • When colliding with a **good cube**, the player get **bonus points** added to his current score
+    
 
 
 ## Design
