@@ -1,15 +1,10 @@
 package org.g52.gui;
 
-import com.googlecode.lanterna.TerminalSize;
 import com.googlecode.lanterna.input.KeyStroke;
 import com.googlecode.lanterna.input.KeyType;
 import com.googlecode.lanterna.screen.Screen;
-import com.googlecode.lanterna.screen.TerminalScreen;
-import com.googlecode.lanterna.terminal.DefaultTerminalFactory;
-import com.googlecode.lanterna.terminal.Terminal;
 import org.g52.data.ArenaModel;
 import org.g52.data.Cube;
-
 
 import java.io.IOException;
 
@@ -24,11 +19,8 @@ public class ArenaView {
 
     public enum COMMAND {ACCEPT, RIGHT, LEFT, EOF, NOOP}
 
-    public ArenaView(int width, int height, ViewFactory view) throws IOException {
-        DefaultTerminalFactory terminalFactory = new DefaultTerminalFactory().setInitialTerminalSize(new TerminalSize(width, height));
-        Terminal terminal = terminalFactory.createTerminal();
-
-        screen = new TerminalScreen(terminal);
+    public ArenaView(Screen screen, ViewFactory view) throws IOException {
+        this.screen = screen;
         screen.setCursorPosition(null);
         screen.startScreen();
         screen.doResizeIfNecessary();
