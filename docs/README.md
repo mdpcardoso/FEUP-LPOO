@@ -133,4 +133,5 @@ As a possible solution, a factory class instance could be passed so that the ind
 ![Coverage](media/coverage.png)
 ### Mutation
 ![PIT](media/pit.png)
-[Mutation Test Report](pitest/index.html)
+
+[Mutation Test Report](pitest/)
