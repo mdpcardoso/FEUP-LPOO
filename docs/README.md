@@ -131,3 +131,5 @@ As a possible solution, a factory class instance could be passed so that the ind
 ## Tests
 ### Coverage
 ![Coverage](media/coverage.png)
+### Mutation
+[Mutation Test Report](pitest/index.html)
