@@ -24,8 +24,6 @@ public class PlayerController {
         if (canMove(nextPosition, arena)) {
             arena.setPlayerPosition(nextPosition);
         }
-
-        checkCollision(arena);
     }
 
     private boolean canMove(Position position, ArenaModel arena) {
