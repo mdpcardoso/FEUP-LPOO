@@ -38,7 +38,7 @@ Our game is inspired by Cubefield. Cubefield is an endless runner game where the
     
     • When colliding with a **bad cube**, the player **loses** the game instantly
     
-    • When colliding with a **good cube**, the player get **bonus points** added to his current score
+    • When colliding with a **good cube**, the player gets **bonus points** added to his current score
     
 
 
@@ -49,9 +49,11 @@ Our game is inspired by Cubefield. Cubefield is an endless runner game where the
 
 ![Controller Package](media/rules_class.png)
 
+![Controller Package](media/gamestate_class.png)
+
 ---
 
-### Problem in Context
+### Problem in Context - MVC Pattern
 There was a considerable amount of too tightly coupled code, accompanied by classes with too much responsibility. The lack of modularity caused both difficulty extending functionality and unit testing the code.
 ### The pattern
 We applied the **MVC** architectural pattern. This pattern allows for **separation of concerns** while simultaneously promoting **looser coupling**. This pattern addresses the identified problems because it implies the division of the program logic into three loosely coupled units. That promotes both modularity and the usage of single-responsibility principle.
@@ -67,7 +69,7 @@ The use of MVC provided the following advantages:
 * The separation in logical units allowed for less bloated classes.
 * It became easier to replace a given part of the program for a different implementation.
 ---
-### Problem in context
+### Problem in context - Game Loop Pattern
 At first the game behaved like a turn-based game, advancing on user input. New features were added that related to each other through time and that needed to happen whether or not there was player input.
 ### The pattern
 We applied the **game loop** pattern. The pattern defines an (well, almost) infinite loop where three stages are executed in sequence. First the user input is captured, then the game's internal state is updated, and finally the result is rendered to the screen. Different variations of the game loop pattern also allow to set a target frame rate with various degrees of robustness.
@@ -84,7 +86,7 @@ Still, there are some things to keep in mind:
 * The frame time must be set conservatively as *most* computers can not go back in time (at least not mine). Our implementation does not account for situations where the game goes over budget.
 * Time based events are effectively bound to the frame rate, providing less flexibility.
 ---
-### Problem in context
+### Problem in context - State Pattern
 Soon after the game got to a playable state, the need for a more robust menu system became apparent. This system should also be capable of dealing with arbitrary transitions between game/menu states. At first, we implemented it in a not very correct way, through conditional logic in the View. This goes against the principles of the MVC pattern as well as the Single Responsibility Principle.
 ### The pattern
 We applied the **state** pattern. The pattern defines a set of states in which the state machine can be in, though it can only be in one state at a time. Each state is responsible for listening to inputs or events so that it can trigger a transition to the next state.
