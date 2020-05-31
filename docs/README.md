@@ -135,3 +135,7 @@ As a possible solution, a factory class instance could be passed so that the ind
 ![PIT](media/pit.png)
 
 [Mutation Test Report](pitest/)
+
+## Self-evaluation
+* Mário Cardoso: 50%
+* Adriana Gonçalves: 50%
