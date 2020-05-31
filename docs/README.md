@@ -20,7 +20,7 @@ Our game is inspired by Cubefield. Cubefield is an endless runner game where the
     
     • After pressing enter, cubes start falling: **good cubes** (in green) and **bad cubes** (the hollow cube boxes)
     
-    • By pressing'P' the player can **pause the game** in its current state; To **resume the game** the player can press Enter
+    • By pressing Enter the player can **pause the game** in its current state; To **resume the game** the player can press Enter again
     
     • When the player loses a **Game Over menu** appears: this menu allows the player to press Enter to **play again** or Q to **exit the game** 
     
@@ -67,7 +67,7 @@ The **model** part aggregates classes that provide data for game entities such a
 The above packages can be found here:
 * [data](../src/main/java/org/g52/data) (Model)
 * [gui](../src/main/java/org/g52/gui) (View)
-* [rule](../src/main/java/org/g52/rules) (Controller)
+* [rules](../src/main/java/org/g52/rules) (Controller)
 
 ### Consequences
 The use of MVC provided the following advantages:
