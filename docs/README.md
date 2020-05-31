@@ -63,6 +63,12 @@ The game was separated in three units: the model (representing the data), the vi
 The **model** part aggregates classes that provide data for game entities such as the **player**, the **cubes** and the **arena** where they exist. The **view** classes are responsible for knowing how each entity is drawn, and the **controllers** are responsible for the main loop and entity behavior. 
 
 ![MVC Implementation](media/mvc.png)
+
+The above packages can be found here:
+* [data](../src/main/java/org/g52/data) (Model)
+* [gui](../src/main/java/org/g52/gui) (View)
+* [rule](../src/main/java/org/g52/rules) (Controller)
+
 ### Consequences
 The use of MVC provided the following advantages:
 * Due to the looser coupling, dependency injection was possible allowing proper unit testing to happen.
@@ -76,7 +82,10 @@ We applied the **game loop** pattern. The pattern defines an (well, almost) infi
 ### Implementation
 Due to following the MVC pattern described above, most of the structure in order to implement the game loop was already there. We start by capturing user input using the ArenaView class for the first stage. Then we execute all the *controller* classes so to update the game state. Finally, the scene is rendered by, once again, the ArenaView class. We chose to implement a simple sleep mechanism that waits the remaining time of each frame time.
 
-![MVC Implementation](media/gameloop.png)
+![Game Loop Implementation](media/gameloop.png)
+
+The above loop and its stages can be found here:
+* [ArenaController](../src/main/java/org/g52/rules/ArenaController.java#L68)
 ### Consequences
 The game loop pattern provided the following advantages:
 * The game no longer spins needlessly.
@@ -93,7 +102,15 @@ We applied the **state** pattern. The pattern defines a set of states in which t
 ### Implementation
 We start by setting a common interface for each state consisting of an execute() method. Our main Controller class starts with a default state (a start menu, GameStartState()). The currently set state's execute() method is run in each iteration of the game's main loop. The method then executes and in the end checks whether the inputs or events trigger a change to a new state which is then set.
 
-![MVC Implementation](media/state.png)
+![State Implementation](media/state.png)
+
+The above classes can be found in the following files:
+* [ArenaController](../src/main/java/org/g52/rules/ArenaController.java)
+* [GameStartState](../src/main/java/org/g52/rules/gamestate/GameStartState.java)
+* [GamePauseState](../src/main/java/org/g52/rules/gamestate/GamePauseState.java)
+* [GameOverState](../src/main/java/org/g52/rules/gamestate/GameOverState.java)
+* [State](../src/main/java/org/g52/rules/gamestate/State.java)
+* [GameState](/src/main/java/org/g52/rules/gamestate/GameState.java)
 ### Consequences
 Using the state pattern provided some advantages:
 * A clearly defined state, decreasing the possibility of ending up in 'intermediate' or broken state.
