@@ -20,7 +20,7 @@ public class GameState implements State {
 
             controller.setCurrentState(new GameOverState());
         } else if (controller.getPlayer().checkCollision(controller.getArena()) instanceof PowerCube) {
-            controller.getArena().getOverlayModel().setScore(controller.getArena().getOverlayModel().getScore() + 1000);
+            controller.getArena().getOverlayModel().setScore(controller.getArena().getOverlayModel().getScore() + 500);
         } else if (command == ArenaView.COMMAND.ACCEPT) {
             controller.setCurrentState(new GamePauseState());
         }

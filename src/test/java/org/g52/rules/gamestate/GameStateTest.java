@@ -26,7 +26,7 @@ public class GameStateTest {
         GameState gameState = new GameState();
         gameState.execute(ArenaView.COMMAND.EOF, arenaController);
 
-        assertEquals(1001, arenaModel.getOverlayModel().getScore());
+        assertEquals(501, arenaModel.getOverlayModel().getScore());
     }
 
     @Test
