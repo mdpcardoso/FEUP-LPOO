@@ -73,6 +73,8 @@ At first the game behaved like a turn-based game, advancing on user input. New f
 We applied the **game loop** pattern. The pattern defines an (well, almost) infinite loop where three stages are executed in sequence. First the user input is captured, then the game's internal state is updated, and finally the result is rendered to the screen. Different variations of the game loop pattern also allow to set a target frame rate with various degrees of robustness.
 ### Implementation
 Due to following the MVC pattern described above, most of the structure in order to implement the game loop was already there. We start by capturing user input using the ArenaView class for the first stage. Then we execute all the *controller* classes so to update the game state. Finally, the scene is rendered by, once again, the ArenaView class. We chose to implement a simple sleep mechanism that waits the remaining time of each frame time.
+
+![MVC Implementation](media/gameloop.png)
 ### Consequences
 The game loop pattern provided the following advantages:
 * The game no longer spins needlessly.
@@ -88,6 +90,8 @@ Soon after the game got to a playable state, the need for a more robust menu sys
 We applied the **state** pattern. The pattern defines a set of states in which the state machine can be in, though it can only be in one state at a time. Each state is responsible for listening to inputs or events so that it can trigger a transition to the next state.
 ### Implementation
 We start by setting a common interface for each state consisting of an execute() method. Our main Controller class starts with a default state (a start menu, GameStartState()). The currently set state's execute() method is run in each iteration of the game's main loop. The method then executes and in the end checks whether the inputs or events trigger a change to a new state which is then set.
+
+![MVC Implementation](media/state.png)
 ### Consequences
 Using the state pattern provided some advantages:
 * A clearly defined state, decreasing the possibility of ending up in 'intermediate' or broken state.
